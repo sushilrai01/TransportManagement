@@ -1,0 +1,36 @@
+﻿@model TransportManagement.Models.TransportDetail
+
+@{
+    Layout = null;
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Homepage</title>
+    <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+</head>
+<body>
+    <div class="container"> 
+        <div class="subContainer">
+            <div class="inner">
+                @Html.ActionLink("1) Add New Route", "Create", "Routes") @*localhost:xxx/Routes/Create*@
+            </div>
+            <div class="inner">
+                @Html.ActionLink("2) Add New Transport Type", "Create", "TransportType") @*localhost:xxx/TransportType/Create*@
+            </div>
+            <div class="inner">
+                @Html.ActionLink("3) Add New Driver", "Create", "Driver") @*localhost:xxx/Driver/Create*@
+            </div>
+            <div class="inner">
+                @Html.ActionLink("4) Add New Travels & Tours", "Create", "Transport") @*localhost:xxx/Transport/Create*@
+            </div>
+            <div class="inner">
+                @Html.ActionLink("5) Show Transportation Details", "Report") @*localhost:xxx/Home/Report*@
+            </div>
+        </div>
+    </div>
+</body>
+</html>

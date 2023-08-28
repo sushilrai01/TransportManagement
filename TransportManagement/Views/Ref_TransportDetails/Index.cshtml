@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TransportManagement.Models.TransportDetail>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passengers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteDetail.Origin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDetail.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverDetail.Name)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passengers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteDetail.Origin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDetail.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverDetail.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.TransportId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.TransportId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.TransportId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

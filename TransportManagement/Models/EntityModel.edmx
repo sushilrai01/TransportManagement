@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TransportManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DriverDetail">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="20" />
+          <Property Name="DateAvailable" Type="date" Nullable="false" />
+          <Property Name="RouteId" Type="int" />
+        </EntityType>
+        <EntityType Name="RouteDetail">
+          <Key>
+            <PropertyRef Name="RouteId" />
+          </Key>
+          <Property Name="RouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Destination" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransportDetail">
+          <Key>
+            <PropertyRef Name="TransportId" />
+          </Key>
+          <Property Name="TransportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="RouteId" Type="int" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Passengers" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeDetail">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_DriverDetail_RouteDetail">
+          <End Role="RouteDetail" Type="Self.RouteDetail" Multiplicity="0..1" />
+          <End Role="DriverDetail" Type="Self.DriverDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteDetail">
+              <PropertyRef Name="RouteId" />
+            </Principal>
+            <Dependent Role="DriverDetail">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportDetail_DriverDetail">
+          <End Role="DriverDetail" Type="Self.DriverDetail" Multiplicity="0..1" />
+          <End Role="TransportDetail" Type="Self.TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverDetail">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportDetail_RouteDetail">
+          <End Role="RouteDetail" Type="Self.RouteDetail" Multiplicity="0..1" />
+          <End Role="TransportDetail" Type="Self.TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteDetail">
+              <PropertyRef Name="RouteId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportDetail_TypeDetail">
+          <End Role="TypeDetail" Type="Self.TypeDetail" Multiplicity="0..1" />
+          <End Role="TransportDetail" Type="Self.TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDetail">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TransportManagementModelStoreContainer">
+          <EntitySet Name="DriverDetail" EntityType="Self.DriverDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteDetail" EntityType="Self.RouteDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransportDetail" EntityType="Self.TransportDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeDetail" EntityType="Self.TypeDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DriverDetail_RouteDetail" Association="Self.FK_DriverDetail_RouteDetail">
+            <End Role="RouteDetail" EntitySet="RouteDetail" />
+            <End Role="DriverDetail" EntitySet="DriverDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportDetail_DriverDetail" Association="Self.FK_TransportDetail_DriverDetail">
+            <End Role="DriverDetail" EntitySet="DriverDetail" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportDetail_RouteDetail" Association="Self.FK_TransportDetail_RouteDetail">
+            <End Role="RouteDetail" EntitySet="RouteDetail" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportDetail_TypeDetail" Association="Self.FK_TransportDetail_TypeDetail">
+            <End Role="TypeDetail" EntitySet="TypeDetail" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransportManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DriverDetail">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RouteId" Type="Int32" />
+          <Property Name="DateAvailable" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="RouteDetail" Relationship="TransportManagementModel.FK_DriverDetail_RouteDetail" FromRole="DriverDetail" ToRole="RouteDetail" />
+          <NavigationProperty Name="TransportDetail" Relationship="TransportManagementModel.FK_TransportDetail_DriverDetail" FromRole="DriverDetail" ToRole="TransportDetail" />
+        </EntityType>
+        <EntityType Name="TypeDetail">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TransportDetail" Relationship="TransportManagementModel.FK_TransportDetail_TypeDetail" FromRole="TypeDetail" ToRole="TransportDetail" />
+        </EntityType>
+        <EntityContainer Name="TransportManagementEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DriverDetails" EntityType="Self.DriverDetail" />
+          <EntitySet Name="TypeDetails" EntityType="Self.TypeDetail" />
+          <EntitySet Name="RouteDetails" EntityType="TransportManagementModel.RouteDetail" />
+          <AssociationSet Name="FK_DriverDetail_RouteDetail" Association="TransportManagementModel.FK_DriverDetail_RouteDetail">
+            <End Role="RouteDetail" EntitySet="RouteDetails" />
+            <End Role="DriverDetail" EntitySet="DriverDetails" />
+          </AssociationSet>
+          <EntitySet Name="TransportDetail" EntityType="TransportManagementModel.TransportDetail" />
+          <AssociationSet Name="FK_TransportDetail_DriverDetail" Association="TransportManagementModel.FK_TransportDetail_DriverDetail">
+            <End Role="DriverDetail" EntitySet="DriverDetails" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportDetail_RouteDetail" Association="TransportManagementModel.FK_TransportDetail_RouteDetail">
+            <End Role="RouteDetail" EntitySet="RouteDetails" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportDetail_TypeDetail" Association="TransportManagementModel.FK_TransportDetail_TypeDetail">
+            <End Role="TypeDetail" EntitySet="TypeDetails" />
+            <End Role="TransportDetail" EntitySet="TransportDetail" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="RouteDetail">
+          <Key>
+            <PropertyRef Name="RouteId" />
+          </Key>
+          <Property Name="RouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Origin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DriverDetails" Relationship="TransportManagementModel.FK_DriverDetail_RouteDetail" FromRole="RouteDetail" ToRole="DriverDetail" />
+          <NavigationProperty Name="TransportDetail" Relationship="TransportManagementModel.FK_TransportDetail_RouteDetail" FromRole="RouteDetail" ToRole="TransportDetail" />
+        </EntityType>
+        <Association Name="FK_DriverDetail_RouteDetail">
+          <End Type="TransportManagementModel.RouteDetail" Role="RouteDetail" Multiplicity="0..1" />
+          <End Type="TransportManagementModel.DriverDetail" Role="DriverDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteDetail">
+              <PropertyRef Name="RouteId" />
+            </Principal>
+            <Dependent Role="DriverDetail">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TransportDetail">
+          <Key>
+            <PropertyRef Name="TransportId" />
+          </Key>
+          <Property Name="TransportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="RouteId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Passengers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DriverDetail" Relationship="TransportManagementModel.FK_TransportDetail_DriverDetail" FromRole="TransportDetail" ToRole="DriverDetail" />
+          <NavigationProperty Name="RouteDetail" Relationship="TransportManagementModel.FK_TransportDetail_RouteDetail" FromRole="TransportDetail" ToRole="RouteDetail" />
+          <NavigationProperty Name="TypeDetail" Relationship="TransportManagementModel.FK_TransportDetail_TypeDetail" FromRole="TransportDetail" ToRole="TypeDetail" />
+        </EntityType>
+        <Association Name="FK_TransportDetail_DriverDetail">
+          <End Type="TransportManagementModel.DriverDetail" Role="DriverDetail" Multiplicity="0..1" />
+          <End Type="TransportManagementModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverDetail">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportDetail_RouteDetail">
+          <End Type="TransportManagementModel.RouteDetail" Role="RouteDetail" Multiplicity="0..1" />
+          <End Type="TransportManagementModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteDetail">
+              <PropertyRef Name="RouteId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportDetail_TypeDetail">
+          <End Type="TransportManagementModel.TypeDetail" Role="TypeDetail" Multiplicity="0..1" />
+          <End Type="TransportManagementModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDetail">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="TransportDetail">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TransportManagementModelStoreContainer" CdmEntityContainer="TransportManagementEntities1">
+          <EntitySetMapping Name="DriverDetails">
+            <EntityTypeMapping TypeName="TransportManagementModel.DriverDetail">
+              <MappingFragment StoreEntitySet="DriverDetail">
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="DateAvailable" ColumnName="DateAvailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeDetails">
+            <EntityTypeMapping TypeName="TransportManagementModel.TypeDetail">
+              <MappingFragment StoreEntitySet="TypeDetail">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteDetails">
+            <EntityTypeMapping TypeName="TransportManagementModel.RouteDetail">
+              <MappingFragment StoreEntitySet="RouteDetail">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransportDetail">
+            <EntityTypeMapping TypeName="TransportManagementModel.TransportDetail">
+              <MappingFragment StoreEntitySet="TransportDetail">
+                <ScalarProperty Name="Passengers" ColumnName="Passengers" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
