@@ -173,6 +173,9 @@
     <Content Include="Views\TransportType\Create.cshtml" />
     <Content Include="Views\Driver\Create.cshtml" />
     <Content Include="Views\Transport\Create.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
