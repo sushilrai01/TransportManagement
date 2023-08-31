@@ -68,8 +68,19 @@ namespace TransportManagement.ViewModel
         public int Passengers { get; set; }
 
         public int TypeID { get; set; }
+
+        [Display(Name = "Vehicle Type")]
+        public string VehicleName { get; set; }
         public int DriverID { get; set; }
+
+        [Display(Name = "Driver")]
+        public string DriverName { get; set; }
         public int RouteID { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
+
+        [Display(Name = "Travel Cost")]
+        public int Cost { get; set; }
 
         public List<DropDownModel> TypeList { get; set; }
         public List<DropDownModel> DriverList { get; set; }

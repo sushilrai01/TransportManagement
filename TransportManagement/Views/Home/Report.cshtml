@@ -1,7 +1,72 @@
-﻿
-@{
-    ViewBag.Title = "Report";
+﻿@model IEnumerable<TransportManagement.ViewModel.TransportRouteModel>
+
+<h2>Transport Report</h2>
+
+<p>
+    @Html.ActionLink("Go To Homepage", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransportId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passengers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransportId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passengers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            @Html.ActionLink("Add New Travels & Tours", "Create", "Transport")
+        </td>
+    </tr>
 }
 
-<h2>Report</h2>
-
+</table>

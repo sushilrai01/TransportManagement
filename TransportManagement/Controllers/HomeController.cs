@@ -21,16 +21,22 @@ namespace TransportManagement.Controllers
         //GET: Home/Report
         public ActionResult Report()
         {
-            var reportData = (from transportDeteail in db.TransportDetail
-                             join driverDetail in db.DriverDetails on transportDeteail.DriverId equals driverDetail.DriverId
-                             join typeDetail in db.TypeDetails on transportDeteail.TypeId equals typeDetail.TypeId
-                             join routeDetail in db.RouteDetails on transportDeteail.RouteId equals routeDetail.RouteId
+            var reportData = (from transportDetail in db.TransportDetail
+                             join driverDetail in db.DriverDetails on transportDetail.DriverId equals driverDetail.DriverId
+                             join typeDetail in db.TypeDetails on transportDetail.TypeId equals typeDetail.TypeId
+                             join routeDetail in db.RouteDetails on transportDetail.RouteId equals routeDetail.RouteId
                              select new TransportRouteModel
                              {
-                                 TransportId = transportDeteail.TransportId,
-
+                                 TransportId =  transportDetail.TransportId,
+                                 VehicleName = typeDetail.Name,
+                                 DriverName = driverDetail.Name,
+                                 Origin = routeDetail.Origin,
+                                 Destination = routeDetail.Destination, 
+                                 Cost = routeDetail.Cost,   
+                                 Date = transportDetail.Date,
+                                 Passengers = transportDetail.Passengers, 
                              }).ToList();
-            return View();
+            return View(reportData);
         }
     }
 }
