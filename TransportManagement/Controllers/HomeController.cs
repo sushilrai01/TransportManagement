@@ -19,17 +19,18 @@ namespace TransportManagement.Controllers
         }
 
         //GET: Home/Report
-        //public  ActionResult Report()
-        //{
-        //    var reportData = from transportDeteail in db.TransportDetails
-        //                     join driverDetail in db.DriverDetails on transportDeteail.DriverId equals driverDetail.DriverId
-        //                     join typeDetail in db.TypeDetails on transportDeteail.TypeId equals typeDetail.TypeId
-        //                     join routeDetail in db.RouteDetails on transportDeteail.RouteId equals routeDetail.RouteId 
-        //                     select new TransportRouteModel 
-        //                     {
-        //                         TransportId = transportDeteail.TransportId,
-        //                         typeModel. =  
-        //                     }
-        //}
+        public ActionResult Report()
+        {
+            var reportData = (from transportDeteail in db.TransportDetail
+                             join driverDetail in db.DriverDetails on transportDeteail.DriverId equals driverDetail.DriverId
+                             join typeDetail in db.TypeDetails on transportDeteail.TypeId equals typeDetail.TypeId
+                             join routeDetail in db.RouteDetails on transportDeteail.RouteId equals routeDetail.RouteId
+                             select new TransportRouteModel
+                             {
+                                 TransportId = transportDeteail.TransportId,
+
+                             }).ToList();
+            return View();
+        }
     }
 }
