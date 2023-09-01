@@ -28,3 +28,13 @@
     padding: 16px;
     color: white;
 }
+
+.table {
+    display: inline-block;
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

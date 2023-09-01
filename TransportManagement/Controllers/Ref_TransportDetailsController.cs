@@ -31,7 +31,7 @@ namespace TransportManagement.Controllers
             TransportDetail transportDetail = db.TransportDetail.Find(id);
             if (transportDetail == null)
             {
-                return HttpNotFound();
+                return HttpNotFound(); 
             }
             return View(transportDetail);
         }

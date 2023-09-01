@@ -18,7 +18,7 @@ namespace TransportManagement.Models
         public Nullable<int> TypeId { get; set; }
         public Nullable<int> DriverId { get; set; }
         public Nullable<int> RouteId { get; set; }
-        public DateTime Date { get; set; }
+        public System.DateTime Date { get; set; }
         public int Passengers { get; set; }
     
         public virtual DriverDetail DriverDetail { get; set; }
