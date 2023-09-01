@@ -35,7 +35,7 @@ namespace TransportManagement.Controllers
                                  Cost = routeDetail.Cost,   
                                  Date = transportDetail.Date,
                                  Passengers = transportDetail.Passengers, 
-                             }).ToList();
+                             }).ToList().OrderBy(x => x.Date);
             return View(reportData);
         }
     }

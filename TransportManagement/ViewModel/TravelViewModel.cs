@@ -15,10 +15,7 @@ namespace TransportManagement.ViewModel
         public int ID { get; set; }
         public string Text { get; set; }
     }
-    //public class DropList
-    //{
-    //    public List<DropDownModel> DropLists { get; set; }
-    //}
+
 
     public class RouteModel
     {
