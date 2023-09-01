@@ -91,4 +91,29 @@ namespace TransportManagement.ViewModel
         public List<DropDownModel> DropList { get; set; }    
     }
 
+    public class TransportModel
+    {
+        public int TransportId { get; set; }
+
+        [Display(Name = "Departure Date")]
+        public DateTime Date { get; set; }
+
+        [Display(Name = "Total Passenger")]
+        public int Passengers { get; set; }
+        public int DriverID { get; set; }
+
+        public int TypeID { get; set; }
+
+        public int RouteID { get; set; }
+      
+    }
+
+    public class TxModel
+    {
+        public TransportModel MODEL { get; set; }
+        public List<DropDownModel> TypeList { get; set; }
+        public List<DropDownModel> DriverList { get; set; }
+        public List<DropDownModel> RouteList { get; set; }
+
+    }
 }
