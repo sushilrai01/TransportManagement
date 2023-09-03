@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Net;
 using System.Web.Mvc;
+using System.Data.Entity;
 using TransportManagement.Models;
 using TransportManagement.ViewModel;
 
@@ -16,7 +17,7 @@ namespace TransportManagement.Controllers
         public ActionResult Index()
         {
             //RouteDetail routeDetail = new RouteDetail();
-            var DriverInfo = db.DriverDetails.Select(x => new DriverModel
+            var DriverInfo = db.DriverDetails.Select(x => new DriverInfoModel
             {
                 Name = x.Name,
                 DriverId = x.DriverId,
@@ -59,14 +60,12 @@ namespace TransportManagement.Controllers
         {
             DriverInfoModel model = new DriverInfoModel();
 
-           var list= db.RouteDetails.Select(x => new DropDownModel
+            model.DropList = db.RouteDetails.Select(x => new DropDownModel
             {
                 ID = x.RouteId,
                 Text = x.Origin + " To " + x.Destination
 
-            });
-
-            model.DropList = list.ToList();
+            }).ToList();
             return View(model);
         }
 
@@ -77,11 +76,11 @@ namespace TransportManagement.Controllers
         {
             DriverDetail driverDetail = new DriverDetail ();
 
-            driverDetail.DriverId = model.driverModel.DriverId;
-            driverDetail.Name = model.driverModel.Name;
-            driverDetail.ContactNo = model.driverModel.ContactNo;
-            driverDetail.DateAvailable = model.driverModel.DateAvailable;
-            driverDetail.RouteId = model.driverModel.RouteId;
+            driverDetail.DriverId = model.DriverId;
+            driverDetail.Name = model.Name;
+            driverDetail.ContactNo = model.ContactNo;
+            driverDetail.DateAvailable = model.DateAvailable;
+            driverDetail.RouteId = model.RouteId;
 
             if (ModelState.IsValid)
             {
@@ -91,5 +90,52 @@ namespace TransportManagement.Controllers
             }
             return View(model);
         }
+
+        //GET: Driver/Edit/id
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DriverInfoModel model = new DriverInfoModel();
+
+            var DriverInfo = db.DriverDetails.Where(x => x.DriverId == id).Select(x => new DriverInfoModel
+            {
+                DriverId = x.DriverId,
+                Name = x.Name,  
+                DateAvailable = x.DateAvailable,
+                ContactNo = x.ContactNo,
+                RouteId = (int)x.RouteId,
+            });
+
+            model = DriverInfo.FirstOrDefault();
+            model.DropList = db.RouteDetails.Select(x => new DropDownModel { ID = x.RouteId, Text = x.Origin + " To " + x.Destination}).ToList();
+
+            return View(model);
+        }
+
+        //POST: Driver/Edit/id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(DriverInfoModel model)
+        {
+            DriverDetail driverDetail = new DriverDetail();
+
+            driverDetail.DriverId = model.DriverId;
+            driverDetail.Name = model.Name;
+            driverDetail.ContactNo = model.ContactNo;
+            driverDetail.DateAvailable = model.DateAvailable;
+            driverDetail.RouteId = model.RouteId;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(driverDetail).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
     }
 }

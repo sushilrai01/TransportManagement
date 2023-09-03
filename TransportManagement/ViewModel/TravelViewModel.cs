@@ -28,22 +28,22 @@ namespace TransportManagement.ViewModel
 
     }
 
-    public class DriverModel
-    {   
-        [Display(Name ="Driver ID")]
-        public int DriverId { get; set; }
+    //public class DriverModel
+    //{   
+    //    [Display(Name ="Driver ID")]
+    //    public int DriverId { get; set; }
 
-        [Display(Name="Driver Name")]
-        public string Name { get; set; }
+    //    [Display(Name="Driver Name")]
+    //    public string Name { get; set; }
 
-        [Display (Name = "Contact No.")]
-        public string ContactNo { get; set; }
-        public int RouteId { get; set; }
+    //    [Display (Name = "Contact No.")]
+    //    public string ContactNo { get; set; }
+    //    public int RouteId { get; set; }
 
-        [Display(Name ="Available On")]
-        public DateTime DateAvailable { get; set; }
+    //    [Display(Name ="Available On")]
+    //    public DateTime DateAvailable { get; set; }
 
-    }
+    //}
 
     public class TypeModel
     {
@@ -88,7 +88,18 @@ namespace TransportManagement.ViewModel
     //
     public class DriverInfoModel
     {
-        public DriverModel driverModel { get; set; } 
+        [Display(Name = "Driver ID")]
+        public int DriverId { get; set; }
+
+        [Display(Name = "Driver Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Contact No.")]
+        public string ContactNo { get; set; }
+        public int RouteId { get; set; }
+
+        [Display(Name = "Available On")]
+        public DateTime DateAvailable { get; set; }
         public List<DropDownModel> DropList { get; set; }    
     }
 

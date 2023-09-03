@@ -180,6 +180,7 @@
     <Content Include="Views\Driver\History.cshtml" />
     <Content Include="Views\Transport\Edit.cshtml" />
     <Content Include="Views\Routes\Index.cshtml" />
+    <Content Include="Views\Driver\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
