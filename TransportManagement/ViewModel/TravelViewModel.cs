@@ -65,14 +65,15 @@ namespace TransportManagement.ViewModel
         public int Passengers { get; set; }
 
         public int TypeID { get; set; }
-
+        public int DriverID { get; set; }
+        public int RouteID { get; set; }
         [Display(Name = "Vehicle Type")]
         public string VehicleName { get; set; }
-        public int DriverID { get; set; }
+       
 
         [Display(Name = "Driver")]
         public string DriverName { get; set; }
-        public int RouteID { get; set; }
+      
         public string Origin { get; set; }
         public string Destination { get; set; }
 
@@ -84,7 +85,7 @@ namespace TransportManagement.ViewModel
         public List<DropDownModel> RouteList { get; set; }
 
     }
-
+    //
     public class DriverInfoModel
     {
         public DriverModel driverModel { get; set; } 
