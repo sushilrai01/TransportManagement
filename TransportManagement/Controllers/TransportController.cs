@@ -61,7 +61,7 @@ namespace TransportManagement.Controllers
             {
                 db.TransportDetail.Add(transportDetail);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Report","Home");
             }
             return View(model);
         }
@@ -76,10 +76,6 @@ namespace TransportManagement.Controllers
 
             TransportRouteModel model = new TransportRouteModel();
 
-            //var typeList = db.TypeDetails.Select(x => new DropDownModel { ID = x.TypeId, Text = x.Name });
-            //var routeList = db.RouteDetails.Select(x => new DropDownModel { ID = x.RouteId, Text = x.Origin + " To " + x.Destination });
-            //var driverList = db.DriverDetails.Select(x => new DropDownModel { ID = x.DriverId, Text = x.Name });
-
             var TransportInfo = db.TransportDetail.Where(x => x.TransportId == id).Select(x => new TransportRouteModel
             {
                 TransportId = x.TransportId,
@@ -88,24 +84,9 @@ namespace TransportManagement.Controllers
                 RouteID = (int)x.RouteId,
                 Date = x.Date,
                 Passengers = x.Passengers,
-                //TypeList = typeList.ToList(),
-                //RouteList = routeList.ToList(),
-                //DriverList = driverList.ToList(),
             });
 
             model = TransportInfo.FirstOrDefault();
-
-            //TxModel model = new TxModel();
-            //var transportInfo = db.TransportDetail.Where(x => x.TransportId == id).Select(x => new TransportModel{
-            //    TransportId = x.TransportId,
-            //    TypeID = (int)x.TypeId,
-            //    DriverID = (int)x.DriverId,
-            //    RouteID = (int)x.RouteId,
-            //    Date = x.Date,  
-            //    Passengers = x.Passengers,
-            //});
-            //model.MODEL = transportInfo.FirstOrDefault();
-
             model.TypeList = db.TypeDetails.Select(x => new DropDownModel { ID = x.TypeId, Text = x.Name }).ToList();
             model.RouteList = db.RouteDetails.Select(x => new DropDownModel { ID = x.RouteId, Text = x.Origin + " To " + x.Destination }).ToList();
             model.DriverList = db.DriverDetails.Select(x => new DropDownModel { ID = x.DriverId, Text = x.Name }).ToList(); 
@@ -142,5 +123,11 @@ namespace TransportManagement.Controllers
             }
             return View(model); 
         }
+
+        //GET: Transport/Delete/id
+
+        //POST: Transport/Delete/id
+
+
     }
 }

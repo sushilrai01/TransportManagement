@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using TransportManagement.Models;
 using TransportManagement.ViewModel;
 
@@ -10,7 +11,14 @@ namespace TransportManagement.Controllers
         // GET: Routes
         public ActionResult Index()
         {
-            return View();
+            var RouteInfo = db.RouteDetails.Select(x => new RouteModel
+            {
+                RouteId = x.RouteId,
+                Origin = x.Origin,
+                Destination = x.Destination,
+                Cost = x.Cost,
+            });
+            return View(RouteInfo.ToList());
         }
 
         //GET: Routes/Create
@@ -30,15 +38,12 @@ namespace TransportManagement.Controllers
             A.Origin = B.Origin;    
             A.Destination = B.Destination;  
             A.Cost = B.Cost;
-            //B.RouteId = A.RouteId;
-            //B.Origin = A.Origin;
-            //B.Destination = A.Destination;
-            //B.Cost = A.Cost;
+
             if (ModelState.IsValid)
             {
                 db.RouteDetails.Add(A);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home"); // Home/Index
+                return RedirectToAction("Index"); // Home/Index
             }
             return View(B);
         }

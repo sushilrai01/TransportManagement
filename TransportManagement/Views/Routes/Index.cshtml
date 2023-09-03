@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TransportManagement.ViewModel.RouteModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subContainer">
+            <p> @Html.ActionLink("Add New Route", "Create") @*localhost:xxx/Driver/Create*@</p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RouteId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Origin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Destination)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cost)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RouteId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Origin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Destination)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <p>
+                @Html.ActionLink("Go to Homepage", "Index", "Home")
+            </p>
+        </div>
+    </div>
+</body>
+</html>
