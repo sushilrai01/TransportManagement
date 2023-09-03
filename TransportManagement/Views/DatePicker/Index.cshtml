@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Nepali Date Picker</title>
+    <link href="~/Content/nepali.datepicker.v4.0.1.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <div>
+    
+        <p><input type="text" id="nepali-datepicker" placeholder="Select Nepali Date" /></p>
+    </div>
+
+    <script src="~/Scripts/nepali.datepicker.v4.0.1.min.js" type="text/javascript"></script>
+    @*<script type="text/javascript">
+        console.log(NepaliFunctions.GetCurrentBsDate());
+    </script>*@
+    <script type="text/javascript">
+        window.onload = function () {
+            var mainInput = document.getElementById("nepali-datepicker");
+            mainInput.nepaliDatePicker();
+        };
+    </script>
+</body>
+</html>

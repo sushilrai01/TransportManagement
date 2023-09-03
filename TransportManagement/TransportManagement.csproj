@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\nepali.datepicker.v4.0.1.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\vehicle.png" />
     <Content Include="Global.asax" />
@@ -110,10 +111,12 @@
       <DependentUpon>EntityModel.edmx</DependentUpon>
       <LastGenOutput>EntityModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\nepali.datepicker.v4.0.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DatePickerController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
@@ -182,6 +185,7 @@
     <Content Include="Views\Routes\Index.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
     <Content Include="Views\Transport\Delete.cshtml" />
+    <Content Include="Views\DatePicker\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

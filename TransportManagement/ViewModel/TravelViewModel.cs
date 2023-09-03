@@ -85,7 +85,7 @@ namespace TransportManagement.ViewModel
         public List<DropDownModel> RouteList { get; set; }
 
     }
-    //
+     
     public class DriverInfoModel
     {
         [Display(Name = "Driver ID")]
