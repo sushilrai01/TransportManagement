@@ -100,13 +100,6 @@ namespace TransportManagement.Controllers
         {
             TransportDetail transportDetail = new TransportDetail();
 
-            //transportDetail.TransportId = model.MODEL.TransportId;
-            //transportDetail.TypeId = model.MODEL.TypeID;
-            //transportDetail.DriverId = model.MODEL.DriverID;
-            //transportDetail.RouteId = model.MODEL.RouteID;
-            //transportDetail.Date = model.MODEL.Date;
-            //transportDetail.Passengers = model.MODEL.Passengers;
-
             transportDetail.TransportId = model.TransportId;
             transportDetail.TypeId = model.TypeID;
             transportDetail.DriverId = model.DriverID;
@@ -125,9 +118,37 @@ namespace TransportManagement.Controllers
         }
 
         //GET: Transport/Delete/id
-
+        public ActionResult Delete(int? id)
+        {
+            if(id== null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+            }
+            var InfoTransport = from transportDetail in db.TransportDetail
+                                join driverDetail in db.DriverDetails on transportDetail.DriverId equals driverDetail.DriverId
+                                join typeDetail in db.TypeDetails on transportDetail.TypeId equals typeDetail.TypeId
+                                join routeDetail in db.RouteDetails on transportDetail.RouteId equals routeDetail.RouteId
+                                where transportDetail.TransportId == id 
+                                select new TransportRouteModel
+                                {
+                                    TransportId = transportDetail.TransportId,
+                                    Passengers = transportDetail.Passengers,
+                                    Date = transportDetail.Date,
+                                    VehicleName = typeDetail.Name,
+                                    DriverName = driverDetail.Name,
+                                    Origin = routeDetail.Origin,
+                                    Destination = routeDetail.Destination,
+                                    Cost = routeDetail.Cost,
+                                };
+            return View(InfoTransport.FirstOrDefault()) ;
+        }
         //POST: Transport/Delete/id
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete()
+        {
+            return View();
+        }
 
     }
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Edit Transport Details</title>
+    <title>Delete Transport </title>
     <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
     <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
 </head>
@@ -19,13 +19,14 @@
 
     <div class="container">
         <div>
+            @Html.ActionLink()
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(model   => model.TransportId)
+                @Html.HiddenFor(model => model.TransportId)
 
                 <div class="form-Horizontal">
-                    <h4>Edit Transport Details</h4>
+                    <h4>Delete Selected Transport Detail</h4>
                     <hr />
 
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })

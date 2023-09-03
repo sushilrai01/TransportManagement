@@ -181,6 +181,7 @@
     <Content Include="Views\Transport\Edit.cshtml" />
     <Content Include="Views\Routes\Index.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Transport\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

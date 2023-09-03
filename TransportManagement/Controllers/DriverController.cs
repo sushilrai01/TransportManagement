@@ -74,6 +74,11 @@ namespace TransportManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DriverInfoModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            
             DriverDetail driverDetail = new DriverDetail ();
 
             driverDetail.DriverId = model.DriverId;
@@ -81,14 +86,10 @@ namespace TransportManagement.Controllers
             driverDetail.ContactNo = model.ContactNo;
             driverDetail.DateAvailable = model.DateAvailable;
             driverDetail.RouteId = model.RouteId;
-
-            if (ModelState.IsValid)
-            {
-                db.DriverDetails.Add(driverDetail);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home"); // Home/Index
-            }
-            return View(model);
+            
+            db.DriverDetails.Add(driverDetail);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home"); // Home/Index
         }
 
         //GET: Driver/Edit/id
@@ -106,7 +107,7 @@ namespace TransportManagement.Controllers
                 Name = x.Name,  
                 DateAvailable = x.DateAvailable,
                 ContactNo = x.ContactNo,
-                RouteId = (int)x.RouteId,
+                RouteId = x.RouteId==null?0:x.RouteId.Value,
             });
 
             model = DriverInfo.FirstOrDefault();

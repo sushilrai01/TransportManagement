@@ -32,6 +32,11 @@ namespace TransportManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( RouteModel B)
         {
+           
+            if (!ModelState.IsValid)
+            {
+                return View(B);
+            }
             RouteDetail A = new RouteDetail();
 
             A.RouteId = B.RouteId;
@@ -39,13 +44,11 @@ namespace TransportManagement.Controllers
             A.Destination = B.Destination;  
             A.Cost = B.Cost;
 
-            if (ModelState.IsValid)
-            {
                 db.RouteDetails.Add(A);
                 db.SaveChanges();
                 return RedirectToAction("Index"); // Home/Index
-            }
-            return View(B);
+            
+          
         }
 
     }

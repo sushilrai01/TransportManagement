@@ -16,7 +16,9 @@ namespace TransportManagement.Controllers
         //GET: Type/Create
         public ActionResult Create()
         {
-            return View();
+            TypeModel typeModel = new TypeModel();
+            typeModel.Name = "HEROHONDA";
+            return View(typeModel);
         }
 
         //POST:  Type/Create
