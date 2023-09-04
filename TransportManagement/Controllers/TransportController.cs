@@ -147,7 +147,7 @@ namespace TransportManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            TransportDetail transportDetail = db.TransportDetail.Find(id);
+            var transportDetail = db.TransportDetail.Find(id);
             db.TransportDetail.Remove(transportDetail); 
             db.SaveChanges();
             return RedirectToAction("Report", "Home");
