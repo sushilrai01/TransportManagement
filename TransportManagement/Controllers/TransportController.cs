@@ -38,6 +38,14 @@ namespace TransportManagement.Controllers
                 Text = x.Origin + " To " + x.Destination
             }).ToList();
 
+            //model.DriverList = (from routeDetail in db.RouteDetails
+            //                    join driverDetail in db.DriverDetails on routeDetail.RouteId equals driverDetail.RouteId
+            //                    select new DropDownModel
+            //                    {
+            //                        ID = driverDetail.DriverId,
+            //                        Text = driverDetail.Name,
+            //                    }).ToList();
+
             model.DriverList = db.DriverDetails.Select(x => new DropDownModel { ID = x.DriverId, Text = x.Name }).ToList();
 
             return View(model);
