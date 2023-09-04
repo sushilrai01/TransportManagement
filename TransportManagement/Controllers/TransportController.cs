@@ -54,7 +54,7 @@ namespace TransportManagement.Controllers
             transportDetail.TypeId = model.TypeID;
             transportDetail.DriverId = model.DriverID;
             transportDetail.RouteId = model.RouteID;
-            transportDetail.Date = model.Date;
+            transportDetail.Date = (DateTime)model.Date;
             transportDetail.Passengers = model.Passengers;
 
             if (ModelState.IsValid)
@@ -104,7 +104,7 @@ namespace TransportManagement.Controllers
             transportDetail.TypeId = model.TypeID;
             transportDetail.DriverId = model.DriverID;
             transportDetail.RouteId = model.RouteID;
-            transportDetail.Date = model.Date;
+            transportDetail.Date = (DateTime)model.Date;
             transportDetail.Passengers = model.Passengers;
 
 

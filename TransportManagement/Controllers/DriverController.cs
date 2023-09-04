@@ -84,7 +84,7 @@ namespace TransportManagement.Controllers
             driverDetail.DriverId = model.DriverId;
             driverDetail.Name = model.Name;
             driverDetail.ContactNo = model.ContactNo;
-            driverDetail.DateAvailable = model.DateAvailable;
+            driverDetail.DateAvailable = (DateTime)model.DateAvailable;
             driverDetail.RouteId = model.RouteId;
             
             db.DriverDetails.Add(driverDetail);
@@ -126,7 +126,7 @@ namespace TransportManagement.Controllers
             driverDetail.DriverId = model.DriverId;
             driverDetail.Name = model.Name;
             driverDetail.ContactNo = model.ContactNo;
-            driverDetail.DateAvailable = model.DateAvailable;
+            driverDetail.DateAvailable = (DateTime)model.DateAvailable;
             driverDetail.RouteId = model.RouteId;
 
             if (ModelState.IsValid)

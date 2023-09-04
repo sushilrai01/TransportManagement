@@ -59,7 +59,7 @@ namespace TransportManagement.ViewModel
         public int TransportId { get; set;}
 
         [Display(Name ="Departure Date")]
-        public DateTime Date { get; set; }
+        public Nullable<DateTime> Date { get; set; }
 
         [Display (Name ="Total Passenger")]       
         public int Passengers { get; set; }
@@ -99,7 +99,7 @@ namespace TransportManagement.ViewModel
         public int RouteId { get; set; }
 
         [Display(Name = "Available On")]
-        public DateTime DateAvailable { get; set; }
+        public Nullable<DateTime > DateAvailable { get; set; }
         public List<DropDownModel> DropList { get; set; }    
     }
 
