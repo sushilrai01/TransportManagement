@@ -145,9 +145,12 @@ namespace TransportManagement.Controllers
         //POST: Transport/Delete/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            return View();
+            TransportDetail transportDetail = db.TransportDetail.Find(id);
+            db.TransportDetail.Remove(transportDetail); 
+            db.SaveChanges();
+            return RedirectToAction("Report", "Home");
         }
 
     }
