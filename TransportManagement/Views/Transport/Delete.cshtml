@@ -10,7 +10,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>Delete Transport </title>
     <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
-    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+
+    @*<link rel="stylesheet" type="text/css" href="~/Content/site.css" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -82,7 +90,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Delete" class="btn btn-default" />
+                            <input type="submit" value="Delete" class="btn btn-primary" />
                         </div>
                     </div>
 

@@ -10,24 +10,26 @@
     <meta name="viewport" content="width=device-width" />
     <title>Homepage</title>
     <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
+
     <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+    <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
     <div class="container"> 
         <div class="subContainer">
-            <div class="inner">
+            <div class="inner col-md-4">
                 @Html.ActionLink("1) Route Details", "Index", "Routes") @*localhost:xxx/Routes/Index*@
             </div>
-            <div class="inner">
+            <div class="inner col-md-4">
                 @Html.ActionLink("2) Add New Transport Type", "Create", "TransportType") @*localhost:xxx/TransportType/Create*@
             </div>
-            <div class="inner">
+            <div class="inner col-md-4">
                 @Html.ActionLink("3) Driver Details", "Index", "Driver") @*localhost:xxx/Driver/Index*@
             </div>
-            <div class="inner">
+            <div class="inner col-md-4">
                 @Html.ActionLink("4) Add New Travels & Tours", "Create", "Transport") @*localhost:xxx/Transport/Create*@
             </div>
-            <div class="inner">
+            <div class="inner col-md-4">
                 @Html.ActionLink("5) Show Transportation Details", "Report") @*localhost:xxx/Home/Report*@
             </div>
         </div>
