@@ -7,32 +7,60 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Homepage</title>
     <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
 
-    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
-    <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/site.css" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-    <div class="container"> 
-        <div class="subContainer">
-            <div class="inner col-md-4">
-                @Html.ActionLink("1) Route Details", "Index", "Routes") @*localhost:xxx/Routes/Index*@
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 class="text-bg-success">Welcome To Transport Management System  </h1>
+           
+            <p>
+                <pre class="text-bg-success lead">Manage Travel routes!</pre>
+            </p>
+        </div>
+    </div>
+   
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-4 text-center">
+                <p class="text-danger">
+                    @Html.ActionLink("1) Route Details", "Index", "Routes") @*localhost:xxx/Routes/Index*@
+                </p>
             </div>
-            <div class="inner col-md-4">
-                @Html.ActionLink("2) Add New Transport Type", "Create", "TransportType") @*localhost:xxx/TransportType/Create*@
+            <div class=" col-md-4 text-center">
+                <p >
+                    @Html.ActionLink("2) Add New Transport Type", "Create", "TransportType") @*localhost:xxx/TransportType/Create*@
+
+                </p>
             </div>
-            <div class="inner col-md-4">
-                @Html.ActionLink("3) Driver Details", "Index", "Driver") @*localhost:xxx/Driver/Index*@
+            <div class=" col-md-4 text-center">
+                <p>
+                    @Html.ActionLink("3) Driver Details", "Index", "Driver") @*localhost:xxx/Driver/Index*@
+                </p>
             </div>
-            <div class="inner col-md-4">
-                @Html.ActionLink("4) Add New Travels & Tours", "Create", "Transport") @*localhost:xxx/Transport/Create*@
+        </div>
+        <div class="row">
+            <div class=" col-md-4 text-center">
+                <p>
+                    @Html.ActionLink(" 4) Add New Travels & Tours", "Create", "Transport") @*localhost:xxx/Transport/Create*@
+                </p>
             </div>
-            <div class="inner col-md-4">
-                @Html.ActionLink("5) Show Transportation Details", "Report") @*localhost:xxx/Home/Report*@
+            <div class=" col-md-4 text-center">
+                <p>
+                    @Html.ActionLink("5) Show Transportation Details", "Report") @*localhost:xxx/Home/Report*@
+                </p>
             </div>
         </div>
     </div>
+
+    <script src="~/Scripts/jquery/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

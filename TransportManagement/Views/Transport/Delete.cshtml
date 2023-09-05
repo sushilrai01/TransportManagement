@@ -10,16 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Delete Transport </title>
     <link rel="icon" type="image/x-icon" href="~/Content/vehicle.png">
-
-    @*<link rel="stylesheet" type="text/css" href="~/Content/site.css" />*@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-</head>
+    <script src="~/Scripts/jquery/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<link rel="stylesheet" type="text/css" href="~/Content/site.css" />*@
+    @*<style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>*@
+    </head>
 <body>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -28,7 +29,7 @@
     <div class="container">
         <div class="subContainer">
             @Html.ActionLink("Cancel", "Report", "Home")
-            <table>
+            <table class="table table-bordered table-striped table-hover">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.TransportId)

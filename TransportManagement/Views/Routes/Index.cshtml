@@ -11,19 +11,21 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     @*<link rel="stylesheet" type="text/css" href="~/Content/site.css" />*@
-    <style>
+    @*<style>
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
         }
-    </style>
+    </style>*@
 </head>
 <body>
     <div class="container">
         <div class="subContainer">
             <p> @Html.ActionLink("Add New Route", "Create") @*localhost:xxx/Driver/Create*@</p>
-            <table class="table">
+            <table  class="table table-bordered table-striped table-hover">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.RouteId)
