@@ -38,17 +38,22 @@ namespace TransportManagement.Controllers
                 Text = x.Origin + " To " + x.Destination
             }).ToList();
 
-            //model.DriverList = (from routeDetail in db.RouteDetails
-            //                    join driverDetail in db.DriverDetails on routeDetail.RouteId equals driverDetail.RouteId
-            //                    select new DropDownModel
-            //                    {
-            //                        ID = driverDetail.DriverId,
-            //                        Text = driverDetail.Name,
-            //                    }).ToList();
-
             model.DriverList = db.DriverDetails.Select(x => new DropDownModel { ID = x.DriverId, Text = x.Name }).ToList();
 
             return View(model);
+        }
+
+        //GET: Transport/GetDriverByRoute
+        public ActionResult GetDriverByRoute(int routeId)
+        {
+            var driverByRoute = db.DriverDetails
+                                .Where(x => x.RouteId == routeId)
+                                .Select(x => new SelectListItem
+                                {
+                                    Value = x.DriverId.ToString(),
+                                    Text = x.Name
+                                }).ToList();
+            return Json(driverByRoute, JsonRequestBehavior.AllowGet);
         }
 
         //POST: Transport/Create
